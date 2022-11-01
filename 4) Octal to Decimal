@@ -1,0 +1,58 @@
+// C++ program to convert octal to decimal
+
+
+int OctToDec(string n)
+{
+  return stoi(n, 0, 8);
+}
+
+
+int main()
+{
+ 
+  string n = "67";
+  cout << OctToDec(n);
+  return 0;
+}
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+int octalToDecimal(int n)
+{
+    int num = n;
+    int dec_value = 0;
+ 
+   
+    int base = 1;
+ 
+    int temp = num;
+    while (temp) {
+ 
+      
+        int last_digit = temp % 10;
+        temp = temp / 10;
+ 
+       
+        dec_value += last_digit * base;
+ 
+        base = base * 8;
+    }
+ 
+    return dec_value;
+}
+ 
+
+int main()
+{
+    int num = 67;
+ 
+    cout << octalToDecimal(num) << endl;
+}
+
+Time complexity: O(logN) where N is the given number
+Auxiliary space: O(1)
+
+
