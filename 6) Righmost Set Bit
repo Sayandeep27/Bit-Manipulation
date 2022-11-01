@@ -1,0 +1,93 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int getFirstSetBitPos(int n) 
+{ 
+    return ffs(n); 
+
+}
+ 
+ 
+ 
+// Driver function
+int main()
+{
+    int n = 18;
+    cout << getFirstSetBitPos(n) << endl;
+    return 0;
+}
+
+Time Complexity: O(log2N), Time taken by ffs() function.
+Auxiliary Space: O(1)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// C++ implementation of above approach
+#include <iostream>
+using namespace std;
+#define INT_SIZE 32
+ 
+int Right_most_setbit(int num)
+{
+    if (num == 0) // for num==0 there is zero set bit
+    {
+        return 0;
+    }
+    else {
+        int pos = 1;
+        // counting the position of first set bit
+        for (int i = 0; i < INT_SIZE; i++) {
+            if (!(num & (1 << i)))
+                pos++;
+            else
+                break;
+        }
+        return pos;
+    }
+}
+int main()
+{
+    int num = 18;
+    int pos = Right_most_setbit(num);
+    cout << pos << endl;
+    return 0;
+}
+
+Time Complexity: O(log2n), Traversing through all the bits of N, where at max there are logN bits.
+Auxiliary Space: O(1)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+ 
+
+int PositionRightmostSetbit(int n)
+{
+    if (n == 0)
+        return 0;
+    
+    int position = 1;
+    int m = 1;
+ 
+    while (!(n & m)) {
+ 
+        // left shift
+        m = m << 1;
+        position++;
+    }
+    return position;
+}
+
+
+int main()
+{
+    int n = 18;
+    // function call
+    cout << PositionRightmostSetbit(n);
+    return 0;
+}
+
+Time Complexity: O(log2n), Traversing through all the bits of N, where at max there are logN bits.
+Auxiliary Space: O(1)
