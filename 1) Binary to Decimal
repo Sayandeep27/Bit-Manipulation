@@ -1,0 +1,56 @@
+ int binary_to_decimal(string str) {
+        // Code here.
+        
+        int num=stoi(str,0,2);
+        
+        return num;
+    }
+    
+    
+    
+    
+    ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+    
+    
+     int binary_to_decimal(string str) {
+        // Code here.
+       int len = str.length();
+
+        int sum = 0;
+
+        int base = 1;
+
+        int digit;
+
+        for(int i = len -1;i>=0;i--)
+
+        {
+
+            if(str[i]=='1')
+
+                digit = 1;
+
+            else
+
+                digit = 0;
+
+                
+
+            int result = digit * base;
+
+            base = base * 2;
+
+            sum = sum + result;
+
+            
+
+        }
+
+        return sum;
+    }
+    
+    
+    
+    
+    
