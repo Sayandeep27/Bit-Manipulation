@@ -1,0 +1,17 @@
+ int setBits(int N) {
+        // Write Your Code here
+        
+        int cnt=0;
+        
+        while(N!=0)
+        {
+            
+            int right_most_set_bit_mask= (N&-N);
+            
+            N=N-right_most_set_bit_mask;
+            cnt++;
+        }
+        
+        
+        return cnt;
+    }
