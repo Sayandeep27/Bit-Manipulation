@@ -1,0 +1,2 @@
+right_most_set_bit_mask = (x & -x)  =  (x & (~x+1))
+
