@@ -1,0 +1,37 @@
+class Solution {
+public:
+    vector<int> singleNumber(vector<int>& nums) {
+        
+      long long int xxory=0;
+        
+      for(long long int i=0;i<nums.size();i++)
+      {
+         xxory =(xxory ^ nums[i]);
+      }
+        
+      long long int rsbm= (xxory & -xxory);  // right most set bit mask
+        
+     long long  int x=0,y=0;
+        
+      for(long long int i=0;i<nums.size();i++)
+      {
+          if((nums[i] & rsbm)==0)
+          {
+              x=(x^nums[i]);
+          }
+          else
+          {
+              y=(y^nums[i]);
+          }
+      }
+        
+        
+        vector<int>ans;
+        
+        ans.push_back(x);
+        ans.push_back(y);
+        
+        return ans;
+        
+    }
+};
