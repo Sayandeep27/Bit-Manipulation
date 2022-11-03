@@ -1,0 +1,76 @@
+
+class Solution{
+public:
+    int *findTwoElement(int *arr, int n) {
+        // code here
+        
+        int xxory=0;
+        
+        for(int i=0;i<n;i++)
+        {
+            xxory=(xxory^arr[i]);
+        }
+        
+        
+        for(int i=1;i<=n;i++)
+        {
+            xxory=(xxory^i);
+        }
+        
+        
+        int rsbm =(xxory & -xxory);  // right most set bit mask
+        
+        int x=0,y=0;
+        
+        for(int i=0;i<n;i++)
+        {
+            if((arr[i] & rsbm)==0)
+            {
+                x=(x^arr[i]);
+            }
+            else
+            {
+               y=(y^arr[i]);   
+            }
+        }
+        
+        
+        for(int i=1;i<=n;i++)
+        {
+            if((i & rsbm)==0)
+            {
+                x=(x^i);
+            }
+            else
+            {
+                y=(y^i);
+            }
+        }
+        
+         int ans[2];
+         int *p = ans;
+        
+        for(int i=0;i<n;i++)
+        {
+            if(x==arr[i])
+            {
+                arr[0]=x;
+                arr[1]=y;
+                break;
+                
+            }
+            else if(y==arr[i])
+            {
+                
+                arr[0]=y;
+                arr[1]=x;
+                break;
+                
+            }
+        }
+        
+        
+        
+        return p;
+    }
+};
