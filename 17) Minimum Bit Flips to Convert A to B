@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int minBitFlips(int a, int b) {
+        
+        int flipped=(a^b);
+        
+        int cnt=0;
+        
+        while(flipped!=0)
+        {
+            int rsbm=(flipped & -flipped);
+            flipped = flipped-rsbm;
+            cnt++;
+        }
+        
+        return cnt;
+    }
+};
