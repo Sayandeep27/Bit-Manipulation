@@ -1,3 +1,14 @@
+
+ int minBitFlips(int start, int goal)
+ {
+        return __builtin_popcount(start^goal);
+ }
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 class Solution {
 public:
     int minBitFlips(int a, int b) {
