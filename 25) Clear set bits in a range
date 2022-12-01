@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int solve(int num,int i,int j)
+{
+   int a=((~0)<<(j+1));
+   int b=(1<<i)-1;
+   
+   int mask=(a | b);
+   
+   return (num & mask);
+}
+
+int main() {
+    
+    int n=10;
+    
+   // clearing set bits in range
+   
+   int i=2,j=4;
+   
+   int ans=solve(n,i,j);
+   
+   cout<<ans<<endl;
+   
+   
+   
+   
+
+    return 0;
+}
