@@ -1,0 +1,37 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int solve(int a,int n)
+{
+    int ans=1;
+    
+    while(n>0)
+    {
+        if((n&1)!=0)
+        {
+            ans=ans*a;
+        }
+        
+        a=a*a;
+        n=n>>1;
+    }
+    
+    
+    return ans;
+    
+}
+
+int main() {
+      
+      // Fast exponentiation - calculating a^n;
+      
+      int a,n; cin>>a>>n;
+      
+      int ans=solve(a,n);
+      
+      cout<<ans<<endl;
+
+
+
+    return 0;
+}
