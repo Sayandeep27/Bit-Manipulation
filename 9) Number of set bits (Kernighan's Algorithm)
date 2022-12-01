@@ -1,3 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int solve(int n)
+{
+    int cnt=0;
+    
+    while(n>0)
+    {
+        if(n&1!=0) // checking rightmost set bit
+        {
+            cnt++;
+        }
+        
+        n=n>>1;
+    }
+
+    return cnt;
+}
+
+int main() {
+    
+    // count set bits
+    
+    int n; cin>>n;
+    
+    int ans=solve(n);
+    
+    cout<<ans<<endl;
+ 
+
+    return 0;
+} 
+ 
+ 
+ 
+ -----------------------------------------------------------------------------------------------------------------------------------------------------------
  int setBits(int N) {
         // Write Your Code here
         
