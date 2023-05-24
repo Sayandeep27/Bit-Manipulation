@@ -1,1 +1,46 @@
 
+class Solution {
+public:
+    
+    int divide(int dividend, int divisor) {
+          
+          // handling corner cases
+
+          if(dividend==INT_MIN and divisor==-1) return INT_MAX;
+
+          if(dividend==INT_MIN and divisor==1) return INT_MIN;
+
+          // converting divisors and dividend to their +ve values
+          long long dd=abs(dividend);
+          long long dv=abs(divisor);
+
+          // result variables
+          int res=0;
+
+          while(dv<=dd)
+          {
+              long long mul=dv;
+              long long temp=1;
+
+              while(mul<=dd-mul)
+              {
+                  mul+=mul;
+                  temp+=temp;
+              }
+
+              res+=temp;
+
+              dd-=mul;
+          }
+
+        // if either of dividend or divisor is -ve , then our answer will be -ve
+
+        if((dividend<0 and divisor>0) or (dividend>0 and divisor<0))
+        {
+            return -res;
+        }
+
+       return res;
+
+    }
+};
