@@ -1,46 +1,42 @@
-
 class Solution {
 public:
-    
     int divide(int dividend, int divisor) {
-          
-          // handling corner cases
+        
+         // handling corner cases
+         if(dividend==INT_MIN and divisor==-1) return INT_MAX;
+         if(dividend==INT_MIN and divisor==1) return INT_MIN;
 
-          if(dividend==INT_MIN and divisor==-1) return INT_MAX;
+         // converting divisor and dividend to their +ve values
+         long long dd=abs(dividend);
+         long long dv=abs(divisor);
 
-          if(dividend==INT_MIN and divisor==1) return INT_MIN;
+         // result variables
+         int ans=0;
 
-          // converting divisors and dividend to their +ve values
-          long long dd=abs(dividend);
-          long long dv=abs(divisor);
+         while(dv<=dd)
+         {
+             long long mul=dv;
+             long long temp=1;
 
-          // result variables
-          int res=0;
+             while(mul<=dd-mul)
+             {
+                 mul=2*mul;
+                 temp=2*temp;
+             }
 
-          while(dv<=dd)
-          {
-              long long mul=dv;
-              long long temp=1;
+             ans+=temp;
+             dd-=mul;
+         }
 
-              while(mul<=dd-mul)
-              {
-                  mul+=mul;
-                  temp+=temp;
-              }
+    // if either dividend or divisor is -ve then our ans will be -ve
 
-              res+=temp;
+    if((dividend<0 and divisor>0) or (dividend>0 and divisor<0))
+    {
+        return -ans;
+    }
 
-              dd-=mul;
-          }
+    return ans;
 
-        // if either of dividend or divisor is -ve , then our answer will be -ve
-
-        if((dividend<0 and divisor>0) or (dividend>0 and divisor<0))
-        {
-            return -res;
-        }
-
-       return res;
 
     }
 };
