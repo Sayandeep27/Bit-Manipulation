@@ -1,3 +1,5 @@
+The 1's complement of a binary number is obtained by inverting all its bits. The 2's complement of a binary number is obtained by adding 1 to the 1's complement of the number
+
 1's complement = ~A 
 2's complement = ~A + 1 = -A
 
