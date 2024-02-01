@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int n=23; // 10111
+    
+    int i=3;
+    
+    // clear last i bits
+    
+    n=(n>>i);
+   
+   cout<<(n<<i)<<endl;  // 10000  means 16
+    
+    return 0;
+}
