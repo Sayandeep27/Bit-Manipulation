@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int n=42;     // 101010
+    
+    int r=2,l=5;  // range 
+    
+    
+    int first = (~0)<<l;
+     
+    int second = (1<<(r-1))-1; 
+    
+    int temp=(first | second);
+    
+    cout<<(temp & n)<<endl;   // 100000 means 32
+    
+    
+    return 0;
+}
