@@ -1,0 +1,18 @@
+n=17, l=2,r=3
+
+(17)   =   (10001)   // given
+(23)   =   (10111)  // ans
+
+A toggle operation flips a bit 0 to 1 and a bit 1 to 0
+
+int toggleBits(int n, int l , int r) {
+        // code here
+        
+        int first=(1<<(l-1))-1;
+        
+        int second=(1<<r)-1;
+        
+        int temp=(first ^ second);
+        
+        return (n ^ temp);
+    }
