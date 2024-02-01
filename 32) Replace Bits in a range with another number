@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+   
+    // original number
+    int m=15;  // 1111
+     
+    // the number which has to be replaced
+    int n=2;  // 10
+     
+    int l=3,r=2;
+    
+    int x = ((~0)<<l);
+    int y = (1<<(r-1))-1;
+    int z = (x | y);
+    
+    int first=(m & z);
+    int second = (n<<(r-1));
+    
+    cout<<(first | second);  // 1101
+                         
+    return 0;
+}
