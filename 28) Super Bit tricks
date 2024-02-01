@@ -1,0 +1,34 @@
+
+    a<<b = a*(2^b)    and    a>>b = a/(2^b)
+    
+    
+    // check if kth bit is set or not
+    x & (1<<k)
+    
+    
+    // toggle the kth bit
+    x ^ (1<<K)
+    
+    // set the kth bit
+    x | (1<<k)
+    
+    // unset the kth bit
+    x & ~(1<<K)
+    
+    
+    
+    a+b = (a^b) + 2*(a^b)
+    a+b = (a|b) + (a&b)
+    
+    
+    
+    // Number of set bits in x  in o(1)
+    
+    __builtin_popcount(x)   // when x is int
+    __builtin_popcountll(x)  // when x is long long
+    
+    
+     a^b=c
+     b^c=a
+     then,
+     a^c=a
