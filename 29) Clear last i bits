@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main()
+int main()       // Can be solved by the process of clearing Bits in range where l=i,r=1
 {
     int n=23; // 10111
     
