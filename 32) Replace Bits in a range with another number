@@ -1,25 +1,29 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
-int main()
-{
-   
-    // original number
-    int m=15;  // 1111
-     
-    // the number which has to be replaced
-    int n=2;  // 10
-     
-    int l=3,r=2;
-    
-    int x = ((~0)<<l);
-    int y = (1<<(r-1))-1;
-    int z = (x | y);
-    
-    int first=(m & z);
-    int second = (n<<(r-1));
-    
-    cout<<(first | second);  // 1101
-                         
+unsigned int replaceBitsInRange(unsigned int n, unsigned int m, int left, int right) {
+    // Step 1: Create a mask to clear bits in the range left to right
+    unsigned int clearMask = ~(((1 << (right - left + 1)) - 1) << left);
+
+    // Step 2: Prepare the replacement bits by shifting m to align with the cleared range in n
+    unsigned int shiftedM = m << left;
+
+    // Step 3: Combine n and shiftedM using bitwise OR to replace bits in the range
+    unsigned int result = n & clearMask;  // Clear the bits to be replaced
+    result |= shiftedM;                   // Set the bits with shiftedM
+
+    return result;
+}
+
+int main() {
+    unsigned int n = 59;   // Original number (binary: 00111011)
+    unsigned int m = 13;   // Number to replace with (binary: 00001101)
+    int left = 5, right = 2; // Range from bit position 5 to bit position 2
+
+    cout << "Original number (n): " << n << endl;
+    cout << "Replacement number (m): " << m << endl;
+    unsigned int replaced = replaceBitsInRange(n, m, left, right);
+    cout << "Number after replacing bits from position " << left << " to " << right << ": " << replaced << endl;
+
     return 0;
 }
