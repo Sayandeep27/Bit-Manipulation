@@ -1,18 +1,23 @@
-n=17, l=2,r=3
+#include <iostream>
+using namespace std;
 
-(17)   =   (10001)   // given
-(23)   =   (10111)  // ans
+unsigned int toggleBitsInRange(unsigned int n, int left, int right) {
+    // Create a mask to toggle bits in the range left to right
+    unsigned int toggleMask = (1 << (right + 1)) - (1 << left); // All 1s from left to right
+    unsigned int fullMask = ~(0); // All 1s for full 32-bit unsigned int
+    unsigned int mask = toggleMask & fullMask; // Combine toggle and full mask
+    
+    // Toggle bits in the range using bitwise XOR
+    return n ^ mask;
+}
 
-A toggle operation flips a bit 0 to 1 and a bit 1 to 0
+int main() {
+    unsigned int n = 255;   // Example number (binary: 11111111)
+    int left = 5, right = 2; // Range from bit position 5 to bit position 2
 
-int toggleBits(int n, int l , int r) {
-        // code here
-        
-        int first=(1<<(l-1))-1;
-        
-        int second=(1<<r)-1;
-        
-        int temp=(first ^ second);
-        
-        return (n ^ temp);
-    }
+    cout << "Original number: " << n << endl;
+    unsigned int toggled = toggleBitsInRange(n, left, right);
+    cout << "Number after toggling bits from position " << left << " to " << right << ": " << toggled << endl;
+
+    return 0;
+}
