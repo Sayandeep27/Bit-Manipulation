@@ -1,52 +1,29 @@
-class Solution
-{
-    public:
+#include <iostream>
+using namespace std;
+
+unsigned int swapOddEvenBits(unsigned int x) {
+    // Mask to extract odd and even bits
+    unsigned int oddMask = 0xAAAAAAAA; // 10101010...
+    unsigned int evenMask = 0x55555555; // 01010101...
+
+    // Extract odd and even bits
+    unsigned int oddBits = x & oddMask;
+    unsigned int evenBits = x & evenMask;
+
+    // Shift odd and even bits to swap them
+    oddBits >>= 1;
+    evenBits <<= 1;
+
+    // Combine odd and even bits
+    return (oddBits | evenBits);
+}
+
+int main() {
+    unsigned int x = 23; // Example number
     
-    unsigned int swapBits(unsigned int n)
-    {
-    	// Your code here
-    	
-    int oddMask=0x55555555;
+    cout << "Original number: " << x << endl;
+    unsigned int swapped = swapOddEvenBits(x);
+    cout << "Number after swapping odd and even bits: " << swapped << endl;
 
-     int evenMask=0xAAAAAAAA;
-
-     int evenPreserved=evenMask&n;
-
-     int oddPereserved=oddMask&n;
-
-     return (evenPreserved>>1)|(oddPereserved<<1);	
-    	
-    }
-};
-
-
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-class Solution
-{
-    public:
-    //Function to swap odd and even bits.
-    unsigned int swapBits(unsigned int n)
-    {
-    	// Your code here
-    	
-    	for(int i=31; i>0; i=i-2)
-    	{
-    	    int a=n&(1<<i);
-    	    int b=n&(1<<(i-1));
-    	    if(a!=0 && b!=0) continue;
-    	    if(a!=0 || b!=0)
-    	    {
-	            n=n^(1<<i);
-	            n=n^(1<<(i-1));
-    	    }
-    	}
-    	return n;
-    	
-    	
-    	
-    	
-    }
-};
+    return 0;
+}
