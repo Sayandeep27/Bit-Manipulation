@@ -1,21 +1,23 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
-int main()
-{
-    int n=42;     // 101010
+unsigned int clearBitsInRange(unsigned int n, int left, int right) {
+    // Create a mask to clear bits in the range left to right
+    unsigned int leftMask = (~0) << (left + 1);   // All 1s from MSB to left
+    unsigned int rightMask = (1 << right) - 1;     // All 1s from LSB to right
+    unsigned int mask = leftMask | rightMask;      // Combine left and right masks
     
-    int r=2,l=5;  // range 
-    
-    
-    int first = (~0)<<l;
-     
-    int second = (1<<(r-1))-1; 
-    
-    int temp=(first | second);
-    
-    cout<<(temp & n)<<endl;   // 100000 means 32
-    
-    
+    // Clear bits in the range using bitwise AND
+    return n & mask;
+}
+
+int main() {
+    unsigned int n = 255;   // Example number (binary: 11111111)
+    int left = 5, right = 2; // Range from bit position 5 to bit position 2
+
+    cout << "Original number: " << n << endl;
+    unsigned int cleared = clearBitsInRange(n, left, right);
+    cout << "Number after clearing bits from position " << left << " to " << right << ": " << cleared << endl;
+
     return 0;
 }
