@@ -1,4 +1,74 @@
 
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void findDuplicateAndMissing(const vector<int>& nums) {
+    int n = nums.size();  // Given array size
+    int xor_all = 0;       // XOR of all elements in nums and from 1 to N
+    int xor_1_to_n = 0;    // XOR of numbers from 1 to N
+    
+    // XOR all elements in nums
+    for (int num : nums) {
+        xor_all ^= num;
+    }
+    
+    // XOR all numbers from 1 to N
+    for (int i = 1; i <= n; ++i) {
+        xor_1_to_n ^= i;
+    }
+    
+    // XOR of xor_all and xor_1_to_n gives us the duplicate and missing number
+    int xor_result = xor_all ^ xor_1_to_n;
+    
+    // Find the rightmost set bit in xor_result (can use any set bit)
+    int set_bit = xor_result & -xor_result;
+    
+    int num1 = 0, num2 = 0;
+    
+    // Divide nums and 1 to N into two groups based on set_bit
+    for (int num : nums) {
+        if (num & set_bit) {
+            num1 ^= num;
+        } else {
+            num2 ^= num;
+        }
+    }
+    
+    for (int i = 1; i <= n; ++i) {
+        if (i & set_bit) {
+            num1 ^= i;
+        } else {
+            num2 ^= i;
+        }
+    }
+    
+    // Check which number is the duplicate
+    for (int num : nums) {
+        if (num == num1) {
+            cout << "Duplicate number: " << num1 << endl;
+            cout << "Missing number: " << num2 << endl;
+            return;
+        }
+    }
+    
+    // If num1 is not found in nums, then num2 is the duplicate
+    cout << "Duplicate number: " << num2 << endl;
+    cout << "Missing number: " << num1 << endl;
+}
+
+int main() {
+    vector<int> nums = {1, 2, 3, 4, 2}; // Example array with one duplicate and one missing number
+    
+    findDuplicateAndMissing(nums);
+    
+    return 0;
+}
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 class Solution{
 public:
     int *findTwoElement(int *arr, int n) {
