@@ -1,37 +1,37 @@
-class Solution {
-public:
-    vector<int> singleNumber(vector<int>& nums) {
-        
-      long long int xxory=0;
-        
-      for(long long int i=0;i<nums.size();i++)
-      {
-         xxory =(xxory ^ nums[i]);
-      }
-        
-      long long int rsbm= (xxory & -xxory);  // right most set bit mask
-        
-     long long  int x=0,y=0;
-        
-      for(long long int i=0;i<nums.size();i++)
-      {
-          if((nums[i] & rsbm)==0)
-          {
-              x=(x^nums[i]);
-          }
-          else
-          {
-              y=(y^nums[i]);
-          }
-      }
-        
-        
-        vector<int>ans;
-        
-        ans.push_back(x);
-        ans.push_back(y);
-        
-        return ans;
-        
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void findTwoUniqueNumbers(const vector<int>& nums) {
+    int xorResult = 0;
+
+    // Step 1: XOR all elements to get xorResult (XOR of the two unique numbers)
+    for (int num : nums) {
+        xorResult ^= num;
     }
-};
+
+    // Step 2: Find a set bit in xorResult (this will be a bit that is different between the two unique numbers)
+    int setBit = xorResult & -xorResult;   // rsbm=rightmost set bit mask
+
+    // Step 3: Divide numbers into two groups and XOR each group
+    int num1 = 0, num2 = 0;
+    for (int num : nums) {
+        if (num & setBit) {
+            num1 ^= num;
+        } else {
+            num2 ^= num;
+        }
+    }
+
+    // num1 and num2 are the two unique numbers
+    cout << "The two unique numbers are: " << num1 << " and " << num2 << endl;
+}
+
+int main() {
+    vector<int> nums = {1, 2, 3, 2, 1, 4};
+    
+    findTwoUniqueNumbers(nums);
+    
+    return 0;
+}
