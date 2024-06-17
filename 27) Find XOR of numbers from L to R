@@ -1,23 +1,27 @@
-class Solution {
-  public:
-    
-    int find(int n)
-    {
-        if(n%4==0) return n;
-        
-        if(n%4==1) return 1;
-        
-        if(n%4==2) return n+1;
-        
-        if(n%4==3) return 0;
+#include <iostream>
+using namespace std;
+
+// Function to calculate XOR from 1 to N
+int xorFrom1ToN(int n) {
+    switch(n % 4) {
+        case 0: return n;     // n % 4 == 0, XOR from 1 to n is n itself
+        case 1: return 1;     // n % 4 == 1, XOR from 1 to n is 1
+        case 2: return n + 1; // n % 4 == 2, XOR from 1 to n is n + 1
+        case 3: return 0;     // n % 4 == 3, XOR from 1 to n is 0
     }
-  
-    int findXOR(int l, int r) {
-        
-        int x=find(l-1);
-        int y=find(r);
-        
-        return (x^y);
-        
-    }
-};
+    return 0;
+}
+
+// Function to find XOR from L to R
+int xorFromLToR(int L, int R) {
+    int xorLtoR = xorFrom1ToN(R) ^ xorFrom1ToN(L - 1);
+    return xorLtoR;
+}
+
+int main() {
+    int L = 5, R = 10; // Example values of L and R
+
+    cout << "XOR from " << L << " to " << R << " is: " << xorFromLToR(L, R) << endl;
+
+    return 0;
+}
