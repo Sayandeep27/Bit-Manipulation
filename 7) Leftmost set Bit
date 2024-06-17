@@ -1,4 +1,34 @@
- unsigned int getFirstSetBit(int n)
+
+#include <iostream>
+using namespace std;
+
+int leftmostSetBit(int n) {
+    if (n == 0)
+        return 0; // Edge case: If n is 0, return 0 or handle as needed
+    
+    int position = 0;
+    // Calculate the number of bits required to represent n
+    while (n != 0) {
+        n >>= 1; // Shift n right by 1
+        position++; // Increment position
+    }
+    
+    return position;
+}
+
+int main() {
+    int n = 58; // Example number
+    cout << "Number: " << n << endl;
+    int leftmost = leftmostSetBit(n);
+    cout << "Position of leftmost set bit: " << leftmost << endl;
+    
+    return 0;
+}
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+unsigned int getFirstSetBit(int n)
     {
         // Your code here
         
